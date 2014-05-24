@@ -16,6 +16,7 @@
             // When a todo is added to the collection, the view won't actually know about it,
             // unless it is listening for that event. So in this case we want the view to listen
             // to the 'add' event, and then call the `renderTodo` function.
+            this.collection.on('add', this.renderTodo);
 
             // 4b. TO COMPLETE
             // --------------
@@ -23,6 +24,9 @@
             // from the model. We can do that by using the `App.Vent.bind();` function. Once
             // we receive that event, we want to call the `removeTodo` function with the
             // correct todo passed to the function.
+            App.Vent.bind('remove-todo', this.removeTodo);
+
+            this.collection.on('destroy', this.removeTodoFromView);
         },
 
         renderTodo: function(todo) {
@@ -53,6 +57,7 @@
             // NOTE: Calling that function will cause the model to fire a 'destroy' event! When
             // that event is fired, we want this view to call `removeTodoFromView` function. See
             // if you can do that on your own!
+            todo.destroy();
         }
 
     });

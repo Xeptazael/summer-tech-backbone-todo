@@ -27,6 +27,10 @@
                 // title, and add that to our todo collection. (Note: It is important that
                 // we give the new todo a unique id so we can get a handle on it in the DOM.
                 // You can do this using `_.guid('todo_')`
+                todos.create({
+                    id: _.guid('todo_'),
+                    title: todoTitle
+                });
             }
 
             todoTitleNode.val('');
@@ -37,5 +41,7 @@
     // --------------
     // First thing we need to do is fetch the already stored todos from local storage (if
     // there are any), and then invoke the `fetchSuccessHandler` to get the ball rolling.
-
+    todoCollection.fetch({
+        success: fetchSuccessHandler
+    });
 }());

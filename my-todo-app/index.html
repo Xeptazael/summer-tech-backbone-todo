@@ -40,7 +40,7 @@
         // for our styles to kick in. In this case, we want to add the 'complete' class to
         // the todo-item. We can do this using the `complete ? 'complete' : ''` helper.
         -->
-        <div id="<%= id %>" class="todo-item">
+        <div id="<%= id %>" class="todo-item <%= complete ? 'complete' : '' %>">
 
             <a class="toggle-complete table-cell" href="javascript:void(0)"></a>
 
@@ -52,7 +52,7 @@
             // of the todo (The same what that was done for `id`)
             -->
             <div class="table-cell todo-title toggle-edit <%= editing ? 'editing' : '' %>">
-                <span class="todo-label"></span>
+                <span class="todo-label"><%= title %></span>
                 <input class="todo-title-edit" type="text" value="<%= title %>">
             </div>
 
